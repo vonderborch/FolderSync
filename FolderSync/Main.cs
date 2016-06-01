@@ -14,6 +14,7 @@
 // </summary>
 //
 // Changelog: 
+//            - 1.0.3 (05-31-2016) - Added a stop button
 //            - 1.0.2 (05-31-2016) - Various fixes
 //            - 1.0.1 (05-31-2016) - Adjusted timer to only restart after the directory copy is complete.
 //            - 1.0.0 (05-31-2016) - Initial version created.
@@ -400,6 +401,19 @@ namespace FolderSync
         }
 
         /// <summary>
+        /// Handles the Click event of the stop_btn control.
+        /// </summary>
+        /// <param name="sender">The source of the event.</param>
+        /// <param name="e">The <see cref="EventArgs"/> instance containing the event data.</param>
+        ///  Changelog:
+        ///             - 1.0.3 (05-31-2016) - Initial version.
+        private void stop_btn_Click(object sender, EventArgs e)
+        {
+            timer.Stop();
+            timeLeftTimer.Stop();
+        }
+
+        /// <summary>
         /// Synchronizes the folders.
         /// </summary>
         /// <param name="sender">The sender.</param>
@@ -474,6 +488,13 @@ namespace FolderSync
         private void TimeLeft(object sender, System.Timers.ElapsedEventArgs e)
         {
             SetTimeLeftText($"Time Left: {Math.Round(timer.TimeLeft / 1000, 3)}");
+
+            if (stopTimers)
+            {
+                timer.Stop();
+                timeLeftTimer.Stop();
+                SetTimeLeftText(stopTimersMessage);
+            }
         }
 
         #endregion Private Methods

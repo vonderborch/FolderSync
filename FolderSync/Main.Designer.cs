@@ -43,6 +43,7 @@
             this.timeLeft_txt = new System.Windows.Forms.TextBox();
             this.overrideModes_cmb = new System.Windows.Forms.ComboBox();
             this.label4 = new System.Windows.Forms.Label();
+            this.stop_btn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // source_txt
@@ -105,10 +106,10 @@
             // 
             // timeLeft_txt
             // 
-            this.timeLeft_txt.Location = new System.Drawing.Point(19, 210);
+            this.timeLeft_txt.Location = new System.Drawing.Point(12, 270);
             this.timeLeft_txt.Name = "timeLeft_txt";
             this.timeLeft_txt.ReadOnly = true;
-            this.timeLeft_txt.Size = new System.Drawing.Size(823, 38);
+            this.timeLeft_txt.Size = new System.Drawing.Size(830, 38);
             this.timeLeft_txt.TabIndex = 8;
             // 
             // overrideModes_cmb
@@ -133,11 +134,22 @@
             this.label4.TabIndex = 10;
             this.label4.Text = "Override Mode:";
             // 
+            // stop_btn
+            // 
+            this.stop_btn.Location = new System.Drawing.Point(864, 254);
+            this.stop_btn.Name = "stop_btn";
+            this.stop_btn.Size = new System.Drawing.Size(219, 69);
+            this.stop_btn.TabIndex = 11;
+            this.stop_btn.Text = "Stop";
+            this.stop_btn.UseVisualStyleBackColor = true;
+            this.stop_btn.Click += new System.EventHandler(this.stop_btn_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(240F, 240F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1095, 260);
+            this.ClientSize = new System.Drawing.Size(1095, 335);
+            this.Controls.Add(this.stop_btn);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.overrideModes_cmb);
             this.Controls.Add(this.timeLeft_txt);
@@ -167,6 +179,7 @@
         private System.Windows.Forms.TextBox timeLeft_txt;
         private System.Windows.Forms.ComboBox overrideModes_cmb;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Button stop_btn;
     }
 }
 
