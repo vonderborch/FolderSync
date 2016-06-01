@@ -14,6 +14,7 @@
 // </summary>
 //
 // Changelog: 
+//            - 1.0.5 (05-31-2016) - Fixed issue copying sub-directories.
 //            - 1.0.4 (05-31-2016) - Fix for overriding a file that already exists.
 //            - 1.0.3 (05-31-2016) - Added a stop button
 //            - 1.0.2 (05-31-2016) - Various fixes
@@ -199,6 +200,7 @@ namespace FolderSync
         /// <param name="sourcePath">Name of the source folder.</param>
         /// <param name="destinationPath">Name of the destination folder.</param>
         ///  Changelog:
+        ///             - 1.0.5 (05-31-2016) - Fixed issue copying sub-directories.
         ///             - 1.0.0 (05-31-2016) - Initial version.
         private void CopyDirectory(string sourcePath, string destinationPath)
         {
@@ -241,7 +243,7 @@ namespace FolderSync
                 }
 
                 if (!canOverride && File.Exists(destination))
-                    return;
+                    continue;
                 try
                 {
                     File.Copy(file, destination, canOverride);
@@ -256,8 +258,10 @@ namespace FolderSync
             // copy the sub-dirs
             foreach (var directory in Directory.EnumerateDirectories(sourcePath))
             {
-                string destination = Path.Combine(destinationPath, Path.GetFileName(directory));
-                CopyDirectory(sourcePath, destination);
+                var dirName = Path.GetFileName(directory);
+                var newSource = Path.Combine(sourcePath, dirName);
+                var newDestination = Path.Combine(destinationPath, dirName);
+                CopyDirectory(newSource, newDestination);
             }
         }
 
