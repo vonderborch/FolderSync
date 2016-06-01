@@ -2,6 +2,8 @@
 Quick little program to help keep two folders synced.
 
 # How to Use
+(Pre: Download source and build project, or download a copy of the executable directly from the [releases section]( https://github.com/vonderborch/FolderSync/releases) )
+
 1. Copy and paste the executable to some destination
 2. Rename the new copy to something unique and descriptive
 3. Run the new copy
