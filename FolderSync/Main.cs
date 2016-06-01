@@ -14,6 +14,7 @@
 // </summary>
 //
 // Changelog: 
+//            - 1.0.4 (05-31-2016) - Fix for overriding a file that already exists.
 //            - 1.0.3 (05-31-2016) - Added a stop button
 //            - 1.0.2 (05-31-2016) - Various fixes
 //            - 1.0.1 (05-31-2016) - Adjusted timer to only restart after the directory copy is complete.
@@ -239,9 +240,17 @@ namespace FolderSync
                         break;
                 }
 
-                if (canOverride && File.Exists(destination))
+                if (!canOverride && File.Exists(destination))
                     return;
-                File.Copy(file, destination, canOverride);
+                try
+                {
+                    File.Copy(file, destination, canOverride);
+                }
+                catch (Exception ex)
+                {
+                    // for debugging
+                    if (true) ;
+                }
             }
 
             // copy the sub-dirs
